@@ -2,10 +2,8 @@ package edu.java.maxjdev;
 import java.util.*;
 /**
  * @author maxdev
- * --** OBS: Pensei em implementar um BubbleSort para ordenar manualmente e comparar com um compareTo,
- * --** mas não vi motivo para usar essa implementação baseando no conceito de que o TreeMap faz isso automáticamente.
  * Primeiro intanciamento do Scanner e HashMaps, input do usuario com nomes+sexo na formatação: Joao-M
- * faz uma primeira divisão dos nomes, usa um foreach para percorrer os nomes no array e separar nome do sexo com split(-),
+ * faz uma primeira separação dos nomes, usa um foreach para percorrer os nomes no array e separar nome do sexo com split(-),
  * usa um if para direcionar os nomes masculinos e femininos aos respectivos HashMaps e ao final imprime tudo.
  */
 public class SeparacaoPorSexo {

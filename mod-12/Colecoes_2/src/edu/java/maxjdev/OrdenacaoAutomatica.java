@@ -4,6 +4,8 @@ import java.util.Scanner;
 import java.util.TreeMap;
 /**
  * @author maxdev
+ * --** OBS: Pensei em implementar um BubbleSort para ordenar manualmente e comparar com um compareTo,
+ * --** mas não vi motivo para usar essa implementação baseando no conceito de que o TreeMap faz isso automáticamente.
  * Scaneia input[String] do usuario,usa split para separar nomes,
  * atribui ao TreeMap que ordena naturalmente e imprime
  */
