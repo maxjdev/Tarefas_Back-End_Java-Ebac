@@ -1,6 +1,9 @@
 package edu.java.maxjdev;
 import edu.java.maxjdev.abstracts.Pessoa;
 import edu.java.maxjdev.interfaces.ITermos;
+import edu.java.maxjdev.pforpj.PessoaFisica;
+import edu.java.maxjdev.pforpj.PessoaJuridica;
+
 import java.util.Scanner;
 /**
  * @author maxdev

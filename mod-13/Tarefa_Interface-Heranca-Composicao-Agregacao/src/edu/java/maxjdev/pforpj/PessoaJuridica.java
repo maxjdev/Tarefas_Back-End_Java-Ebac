@@ -1,4 +1,4 @@
-package edu.java.maxjdev;
+package edu.java.maxjdev.pforpj;
 import edu.java.maxjdev.abstracts.Pessoa;
 /**
  * @author maxdev
