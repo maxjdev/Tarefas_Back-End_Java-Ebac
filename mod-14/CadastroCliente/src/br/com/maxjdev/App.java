@@ -1,16 +1,12 @@
 package br.com.maxjdev;
-import br.com.maxjdev.dao.ClienteMapDAO; // Caso utilize Map no lugar o Set
-import br.com.maxjdev.dao.ClienteSetDAO;
+import br.com.maxjdev.dao.ClienteMapDAO;
 import br.com.maxjdev.dao.IClienteDAO;
 import br.com.maxjdev.domain.Cliente;
-
 import javax.swing.*;
 public class App {
-
     private static IClienteDAO iClienteDAO;
-
     public static void main(String[] args) {
-        iClienteDAO = new ClienteSetDAO();
+        iClienteDAO = new ClienteMapDAO();
 
         String opcao = JOptionPane.showInputDialog(null,
                 "Digite 1 para cadastro, 2 para consultar, 3 para exclusão, 4 para alteração ou 5 para sair",
@@ -53,23 +49,27 @@ public class App {
                     "Digite 1 para cadastro, 2 para consultar, 3 para exclusão, 4 para alteração ou 5 para sair",
                     "Cadastro", JOptionPane.INFORMATION_MESSAGE);
         }
-
-//        ------------------
-        
-
     }
-
-    //    ------------- FIM PSVM -------------
-
     private static void alterar(String dados) {
         String[] dadosSeparados = dados.split(",");
         Cliente cliente = new Cliente(dadosSeparados[0], dadosSeparados[1], dadosSeparados[2], dadosSeparados[3], dadosSeparados[4], dadosSeparados[5], dadosSeparados[6]);
         iClienteDAO.alterar(cliente);
+        JOptionPane.showMessageDialog(null, "Dados do cliente alterados com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
     }
     private static void cadastrar(String dados) {
         String[] dadosSeparados = dados.split(",");
-        Cliente cliente = new Cliente(dadosSeparados[0], dadosSeparados[1], dadosSeparados[2], dadosSeparados[3], dadosSeparados[4], dadosSeparados[5], dadosSeparados[6]);
-        iClienteDAO.cadastrar(cliente);
+        if (dadosSeparados.length == 7) {
+            Cliente cliente = new Cliente(dadosSeparados[0], dadosSeparados[1], dadosSeparados[2], dadosSeparados[3], dadosSeparados[4], dadosSeparados[5], dadosSeparados[6]);
+            Boolean isCadastrado = iClienteDAO.cadastrar(cliente);
+
+            if (isCadastrado) {
+                JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Cliente já se encontra cadastrado", "Erro", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Faltam campos a serem preenchidos", "Erro", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     private static void excluir(String dados) {
@@ -77,8 +77,7 @@ public class App {
         Cliente cliente = iClienteDAO.consultar(cpf);
         if (cliente != null) {
             iClienteDAO.excluir(cpf);
-            JOptionPane.showMessageDialog(null,
-                    "Cliente excluido com sucesso", "Excluir", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Cliente excluido com sucesso", "Excluir", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "Cliente não encontrado. Nenhuma exclusão foi realizada.", "Excluir", JOptionPane.INFORMATION_MESSAGE);
         }
