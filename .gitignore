@@ -28,3 +28,4 @@ replay_pid*
 
 # IDE settings
 .idea/
+/mod-14/JavaSwingApplication/target/

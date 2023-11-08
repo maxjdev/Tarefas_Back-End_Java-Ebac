@@ -42,7 +42,7 @@ public class ClienteSetDAO implements IClienteDAO{
                 if (clienteCadastrado.equals(cliente)) {
                     clienteCadastrado.setNome(cliente.getNome());
                     clienteCadastrado.setTel(cliente.getTel());
-                    clienteCadastrado.setEndereco(cliente.getEndereco());
+                    clienteCadastrado.setEndereco(cliente.getEnd());
                     clienteCadastrado.setNumero(cliente.getNumero());
                     clienteCadastrado.setCidade(cliente.getCidade());
                     clienteCadastrado.setEstado(cliente.getEstado());

@@ -1,5 +1,6 @@
 package edu.java.src.domain;
 import java.util.Objects;
+import javax.swing.JTextField;
 /** @author maxdev
  * Representa um cliente com informações como nome, CPF, telefone, endereço, número, cidade e estado.*/
 public class Cliente {
@@ -7,7 +8,7 @@ public class Cliente {
     private String nome;
     private Long cpf;
     private Long tel;
-    private String endereco;
+    private String end;
     private Integer numero;
     private String cidade;
     private String estado;
@@ -26,10 +27,14 @@ public class Cliente {
         this.nome = nome;
         this.cpf = Long.valueOf(cpf.trim());
         this.tel = Long.valueOf(tel.trim());
-        this.endereco = end;
+        this.end = end;
         this.numero = Integer.valueOf(num.trim());
         this.cidade = cidade;
         this.estado = estado;
+    }
+
+    public Cliente(JTextField txtNome, JTextField txtCPF, JTextField txtTel, JTextField txtEnd, JTextField txtNumero, JTextField txtCidade, JTextField txtEstado) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 //    Getters e Setters
     public String getNome() {
@@ -50,11 +55,11 @@ public class Cliente {
     public void setTel(Long tel) {
         this.tel = tel;
     }
-    public String getEndereco() {
-        return endereco;
+    public String getEnd() {
+        return end;
     }
     public void setEndereco(String endereco) {
-        this.endereco = endereco;
+        this.end = endereco;
     }
     public Integer getNumero() {
         return numero;
