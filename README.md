@@ -1,2 +1,4 @@
-# tarefas_backend_java-ebac
-Este repositório contém as tarefas do curso de Back End Java da EBAC
+# Desenvolvedor Full Stack Java: Back-End - EBAC   
+<img src="https://i.postimg.cc/3xbR5F7H/rounded-in-photoretrica.png" width="150">
+
+## Repositório destinado a entrega dos exercícios do módulo Back-End
