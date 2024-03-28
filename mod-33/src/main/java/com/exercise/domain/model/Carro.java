@@ -1,15 +1,14 @@
 package com.exercise.domain.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor
 @Entity
 @Table(name = "tb_carro")
 public class Carro {
@@ -17,11 +16,11 @@ public class Carro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotBlank
     private String modelo;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "marca_id", nullable = false)
+    @JoinColumn(name = "marca_id")
     private Marca marca;
 
     @ManyToMany
@@ -30,6 +29,17 @@ public class Carro {
             inverseJoinColumns = @JoinColumn(name = "acessorio_id", referencedColumnName = "id")
     )
     private List<Acessorio> acessorios = new ArrayList<>();
+
+    public Carro(String modelo, Marca marca, Acessorio acessorio) {
+        this.modelo = modelo;
+        this.marca = marca;
+        this.acessorios.add(acessorio);
+    }
+
+    public Carro(String modelo, Marca marca) {
+        this.modelo = modelo;
+        this.marca = marca;
+    }
 
     public void addAcessorio(Acessorio acessorio) {
         this.acessorios.add(acessorio);

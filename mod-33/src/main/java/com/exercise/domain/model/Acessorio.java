@@ -1,17 +1,14 @@
 package com.exercise.domain.model;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor
 @Entity
 @Table(name = "tb_acessorio")
 public class Acessorio {
@@ -22,8 +19,17 @@ public class Acessorio {
     @NotBlank
     private String nome;
 
-    @ManyToMany(mappedBy = "acessorios")
+    @ManyToMany(mappedBy = "acessorios", fetch = FetchType.LAZY)
     private List<Carro> carros = new ArrayList<>();
+
+    public Acessorio(String nome) {
+        this.nome = nome;
+    }
+
+    public Acessorio(String nome, Carro carro) {
+        this.nome = nome;
+        this.carros.add(carro);
+    }
 
     public void addCarro(Carro carro) {
         this.carros.add(carro);
